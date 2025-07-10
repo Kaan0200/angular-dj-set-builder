@@ -3,10 +3,10 @@ import { Component, signal } from '@angular/core';
 
 @Component({
     selector: 'set-page',
-    templateUrl: './about.html',
-    styleUrl: './about.scss'
+    templateUrl: './set.html',
+    styleUrl: './set.scss'
   })
-  export class AboutPage {
+  export class SetPage {
     
   }
   
