@@ -1,13 +1,39 @@
 <style>
-
-
+.main {
+  grid-template-rows: auto 1fr;
+}
+.top-bar {
+  height: 4em;
+  background-color:blueviolet;
+}
+.nav-and-content {
+  display: flex;
+  grid-template-columns: auto 1fr;
+}
+.side-navigation {
+  padding: 1em;
+  display: block;
+}
+.content-wrapper {
+  padding: 1em;
+}
 </style>
 
 <main class="main">
-  <div>
-    topbar
+  <div class="top-bar">
+    <span>
+      angular-dj-set-builder
+    </span>
   </div>
-  <router-outlet />
+  <div class="nav-and-content">
+    <nav class="side-navigation">
+      <a routerLink=".">Home</a>
+      <a routerLink="/about">About</a>
+    </nav>
+    <div class="content-wrapper">
+      <router-outlet />
+    </div>
+  </div>
 </main>
 
 
