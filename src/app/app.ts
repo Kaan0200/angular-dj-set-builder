@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { SetNavigation } from "./components/SetNavigation";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, MatNavList, MatListItem],
+  imports: [RouterOutlet, RouterLink, SetNavigation],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -12,7 +13,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class App {
   protected readonly title = signal('angular-dj-set-builder');
 
-  public Sets: Array<{Name: string}> = [
+  public SetLists: Array<TrackSet> = [
     {
       Name: "one"
     },
@@ -24,7 +25,12 @@ export class App {
     }
   ]
 
-  public NewSet(): void {
-    this.Sets.push({Name: "new Item"})
+  public createSet(): void {
+    this.SetLists.push({Name: "new Item"})
   }
+}
+
+/** Interface Object representing a DJ Set of Tracks */
+export interface TrackSet {
+  Name: string;
 }
