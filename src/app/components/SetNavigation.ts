@@ -7,11 +7,10 @@ import { RouterLink } from '@angular/router';
     selector: 'set-navigation',
     imports: [RouterLink, SetNavigation, MatListItem, MatNavList],
     styles: `
-      :host {
+      a {
       text-decoration: none;
       color: greenyellow;
-    }
-    `,
+    }`,
     template: `
         <mat-nav-list>
           <ul>

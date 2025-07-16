@@ -6,8 +6,9 @@
 .top-bar {
   display: flex;
   background-color:blueviolet;
-  align-content: center;
-  padding-left:2rem;
+  align-content: space-evenly;
+  justify-content: space-between;
+  padding-left: 2rem;
   padding-right: 2rem;
 }
 .nav-and-content {
@@ -21,6 +22,10 @@
 .content-wrapper {
   padding: 1em;
 }
+.about-link {
+  
+  align-content: space-evenly;
+}
 
 
 </style>
@@ -28,7 +33,7 @@
 <main class="main">
   <div class="top-bar">
     <h3>DJ Set Builder 🎵</h3>
-    <a routerLink="/about">About</a>
+    <a class="about-link" routerLink="/about">About</a>
   </div>
   <div class="nav-and-content">
     <set-navigation [Sets]="SetLists" (newSet)="createSet()"/>
