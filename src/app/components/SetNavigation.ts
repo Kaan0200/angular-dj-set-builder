@@ -6,6 +6,12 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'set-navigation',
     imports: [RouterLink, SetNavigation, MatListItem, MatNavList],
+    styles: `
+      :host {
+      text-decoration: none;
+      color: greenyellow;
+    }
+    `,
     template: `
         <mat-nav-list>
           <ul>
