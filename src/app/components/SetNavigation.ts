@@ -1,11 +1,11 @@
 import { Component, input, output, signal } from '@angular/core';
 import { MatListItem, MatNavList } from "@angular/material/list";
-import { TrackSet } from '../app';
+import { TrackSet } from '../models/TrackSet';
 import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'set-navigation',
-    imports: [RouterLink, SetNavigation, MatListItem, MatNavList],
+    imports: [RouterLink, MatListItem, MatNavList],
     styles: `
       a {
       text-decoration: none;
@@ -19,7 +19,7 @@ import { RouterLink } from '@angular/router';
             </mat-list-item>
             @for (link of Sets(); track link) {
               <mat-list-item>
-                <a routerLink="">{{ link.Name }}</a>
+                <a routerLink="./{{link.Id}}">{{ link.Name }}</a>
               </mat-list-item>
             }
             <mat-list-item (click)="NewSet()">
