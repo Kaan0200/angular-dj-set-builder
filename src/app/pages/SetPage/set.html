@@ -8,30 +8,25 @@
       <li class="song-row">
         <div>
           <mat-form-field>
-            <mat-label>Artist</mat-label>
-            <input matInput placeholder="Song Artist" [value]="song.Artist"/>
+            <input matInput placeholder="Song Artist" [(ngModel)]="song.Artist"/>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Title</mat-label>
-            <input matInput placeholder="Song title" [value]="song.Title"/>
+            <input matInput placeholder="Song title" [(ngModel)]="song.Title"/>
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Label</mat-label>
-            <input matInput placeholder="Record Label" [value]="song.Label" />
+            <input matInput placeholder="Record Label" [(ngModel)]="song.Label" />
           </mat-form-field>
         </div>
         <div>
           <mat-form-field>
-            <mat-label>Key</mat-label>
-            <input matInput placeholder="Musical Key" [value]="song.MusicKey" />
+            <input matInput placeholder="Musical Key" [(ngModel)]="song.MusicKey" />
           </mat-form-field>
           <mat-form-field>
-            <mat-label>BPM</mat-label>
-            <input matInput placeholder="Tempo" [value]="song.BPM" />
+            <input matInput placeholder="Tempo" type="number" width="64" [(ngModel)]="song.BPM" />
           </mat-form-field>
         </div>
         <div>
-            <mat-slide-toggle label-Position="before">Aquired</mat-slide-toggle>
+            <mat-slide-toggle label-Position="before" >Aquired</mat-slide-toggle>
         </div>
       </li>
       }
