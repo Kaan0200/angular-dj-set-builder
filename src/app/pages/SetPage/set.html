@@ -1,6 +1,7 @@
 <div>
   <div>
-    {{ this.currentTrackSet.Name }} - {{ this.currentTrackSet.Id }}
+    <h2>{{ this.currentTrackSet.Name }}</h2>
+    <span>{{ this.currentTrackSet.Id }}</span>
   </div>
   <div>
     <ol>
@@ -19,14 +20,17 @@
         </div>
         <div>
           <mat-form-field>
-            <input matInput placeholder="Musical Key" [(ngModel)]="song.MusicKey" />
+            <mat-select placeholder="Musical Key" [(ngModel)]="song.MusicKey" >
+              @for (key of AvailableKeys; track key) {
+                <mat-option>{{key}}</mat-option>
+              }
+              
+            </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Tempo" type="number" width="64" [(ngModel)]="song.BPM" />
+            <input matInput placeholder="Tempo" type="number" [(ngModel)]="song.BPM" />
           </mat-form-field>
-        </div>
-        <div>
-            <mat-slide-toggle label-Position="before" >Aquired</mat-slide-toggle>
+            <mat-slide-toggle label-Position="before" >Acquired</mat-slide-toggle>
         </div>
       </li>
       }

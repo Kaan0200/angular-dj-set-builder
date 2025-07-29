@@ -1,8 +1,9 @@
 .song-row {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 1rem;
 }
 .song-row > div {
-
+ display: flex;
+ flex-direction: row;
 }

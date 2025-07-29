@@ -1,6 +1,6 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, signal, SimpleChanges } from '@angular/core';
 import { TrackSet } from '../../models/TrackSet';
-import { MusicTrack } from '../../models/MusicTrack';
+import { MusicTrack, MusicKeys } from '../../models/MusicTrack';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,15 +9,18 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
-
+import { MatOption } from '@angular/material/autocomplete';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
-    imports: [FormsModule, MatIconModule, MatFabButton, MatFormField, MatInput, MatSlideToggle],
+    imports: [FormsModule, MatIconModule, MatFabButton, MatFormField, MatInput,MatSelect, MatOption, MatSlideToggle],
     selector: 'set-page',
     templateUrl: './set.html',
+    changeDetection: ChangeDetectionStrategy.Default,
     styleUrl: './set.scss'
   })
   export class SetPage {
+
     // inject services
     private activeRoute = inject(ActivatedRoute);
     private localStorageService = inject(LocalStorageService);
@@ -41,9 +44,14 @@ import { FormsModule } from '@angular/forms';
         Title: '',
         Label: '',
         BMP: '',
-        MusicKey: '',
+        MusicKey: undefined,
         Aquired: false
       } as MusicTrack);
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+      console.log("!!CHANGES!!");
+      console.log(changes);
     }
   }
   
