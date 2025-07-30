@@ -1,33 +1,42 @@
 <div>
   <div>
-    <h2>{{ this.currentTrackSet.Name }}</h2>
-    <span>{{ this.currentTrackSet.Id }}</span>
+    <h2 class="set-header">
+      <span>
+        {{ this.currentTrackSet().Name }}
+        <mat-icon>edit</mat-icon>
+      </span>
+      <span>
+        <local-save-status [Status]="this.currentStatus()"/>
+      </span>
+    </h2>
+    <span>{{ this.currentTrackSet().Id }}</span>
   </div>
   <div>
     <ol>
-      @for (song of this.currentTrackSet.Tracks; track song) {
+      @for (song of this.currentTrackSet().Tracks; track song) {
       <li class="song-row">
+
         <div>
           <mat-form-field>
-            <input matInput placeholder="Song Artist" [(ngModel)]="song.Artist"/>
+            <input matInput placeholder="Song Artist" [(ngModel)]="song.Artist" (blur)="onBlur()" (change)="onChange()"/>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Song title" [(ngModel)]="song.Title"/>
+            <input matInput placeholder="Song title" [(ngModel)]="song.Title" (blur)="onBlur()" (change)="onChange()"/>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Record Label" [(ngModel)]="song.Label" />
+            <input matInput placeholder="Record Label" [(ngModel)]="song.Label" (blur)="onBlur()" (change)="onChange()"/>
           </mat-form-field>
         </div>
         <div>
-          <mat-form-field>
-            <mat-select placeholder="Musical Key" [(ngModel)]="song.MusicKey" >
-              @for (key of AvailableKeys; track key) {
+          <mat-form-field class="small-input">
+            <mat-select placeholder="Key"  [(ngModel)]="song.MusicKey" >
+              @for (key of MusicKeys; track key) {
                 <mat-option>{{key}}</mat-option>
               }
               
             </mat-select>
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field class="small-input">
             <input matInput placeholder="Tempo" type="number" [(ngModel)]="song.BPM" />
           </mat-form-field>
             <mat-slide-toggle label-Position="before" >Acquired</mat-slide-toggle>
@@ -35,8 +44,12 @@
       </li>
       }
     </ol>
-    <button matFab>
+
+  </div>
+  <div>  
+    <button matFab class="">
       <mat-icon fontIcon="add" (click)="AddSong()"></mat-icon>
     </button>
   </div>
+
 </div>

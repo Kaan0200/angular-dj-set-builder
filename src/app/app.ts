@@ -11,19 +11,29 @@ import { LocalStorageService } from './services/local-storage.service';
   styleUrl: './app.scss'
 })
 
+/**
+ * General Application component, wraps the router, and contains any initial data loading
+ */
 export class App {
+  /* Application Title */
   protected readonly title = signal('angular-dj-set-builder');
+  /* Local Storage Access Service */
   private localStorageService = new LocalStorageService();
+  /* List of Sets in Application */
+  public SetLists: Array<TrackSet> = [];
 
   constructor() {
     // no data in the app, create a demo Set
     if (localStorage.length == 0) {
       this.createSet('Demo Set');
     }
+    // get the saved values out and update the entire app with the saved local storage
   }
 
-  public SetLists: Array<TrackSet> = [];
-
+  /**
+   * Function that creates a new TrackSet and pushes it into LocalStorage
+   * @param name String to name the set with
+   */
   public createSet(name?: string): void {
     let newSet = new TrackSet(name ?? "New Set List");
     this.localStorageService.saveSet(newSet.Id, newSet);

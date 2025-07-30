@@ -9,6 +9,10 @@ import { MatIcon } from '@angular/material/icon';
     styleUrl: './home.scss',
 
   })
+
+  /**
+   * A very simple splash page that explains how to use the app
+   */
   export class HomePage {
     
   }

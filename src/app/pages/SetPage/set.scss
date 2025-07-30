@@ -1,9 +1,18 @@
 .song-row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 1rem;
 }
 .song-row > div {
- display: flex;
- flex-direction: row;
+    display: flex;
+    flex-direction: row;
+}
+
+.small-input {
+    width: 8rem;
+}
+
+.set-header {
+    display: flex;
+    justify-content: space-between;
 }
