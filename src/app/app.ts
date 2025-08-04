@@ -41,7 +41,7 @@ export class App {
    * @param name String to name the set with
    */
   public createSet(name?: string): void {
-    let newSet = new TrackSet(name ?? 'New Set List');
+    const newSet = new TrackSet(name ?? 'New Set List');
     this.localStorageService.saveSet(newSet.Id, newSet);
     this.SetLists.push(newSet);
   }

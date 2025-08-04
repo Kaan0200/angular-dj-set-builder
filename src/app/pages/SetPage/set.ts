@@ -2,9 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  input,
   signal,
-  SimpleChanges,
 } from '@angular/core';
 import { TrackSet } from '../../models/TrackSet';
 import {
@@ -17,7 +15,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFabButton } from '@angular/material/button';
 import {
   MatFormField,
-  MatFormFieldControl,
 } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSlideToggle } from '@angular/material/slide-toggle';

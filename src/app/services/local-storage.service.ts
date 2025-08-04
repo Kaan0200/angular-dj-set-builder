@@ -35,7 +35,7 @@ export class LocalStorageService {
       return value ? JSON.parse(value) : null;
     } catch (error: unknown) {
       console.log('Error reading from local storage');
-      return null;
+      throw error;
     }
   }
 
@@ -43,11 +43,11 @@ export class LocalStorageService {
    * Gets all TrackSets in LocalStorage
    */
   getAll(): TrackSet[] {
-    let returnSets: TrackSet[] = [];
+    const returnSets: TrackSet[] = [];
     const items = { ...localStorage };
     for (const stringObj in items) {
       try {
-        let decodedSet: TrackSet = JSON.parse(
+        const decodedSet: TrackSet = JSON.parse(
           localStorage.getItem(stringObj) ?? '',
         );
         if (decodedSet.Flag === 'dj-flag') {

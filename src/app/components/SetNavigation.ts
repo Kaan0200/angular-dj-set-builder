@@ -1,4 +1,4 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { TrackSet } from '../models/TrackSet';
 import { RouterLink } from '@angular/router';

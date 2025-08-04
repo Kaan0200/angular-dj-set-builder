@@ -10,7 +10,8 @@ export class TrackSet {
   /** List of Tracks */
   Tracks: Array<MusicTrack> = [];
 
-  readonly Flag: 'dj-flag' = 'dj-flag';
+  /** Fixed flag used to identify LocalStorage objects that are Sets */
+  readonly Flag = 'dj-flag' as const;
 
   constructor(name: string) {
     this.Name = name;
