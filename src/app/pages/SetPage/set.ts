@@ -24,6 +24,9 @@ import { LocalSaveStatus, SaveStatus } from "../../components/LocalSaveStatus";
     changeDetection: ChangeDetectionStrategy.Default,
     styleUrl: './set.scss'
   })
+  /**
+   * Page for modifying and editing a single Track Set
+   */
   export class SetPage {
 
     // Moving import into class so Angular Template can access const
@@ -41,13 +44,16 @@ import { LocalSaveStatus, SaveStatus } from "../../components/LocalSaveStatus";
     currentStatus = signal(SaveStatus.clean);
 
     constructor() {
-      console.log(this.activeRoute);
+      // Subscribe/Listen to route changes
       this.activeRoute.params.subscribe((params) => {
         this.currentTrackSetId.set(params['setId']);
+        this.currentTrackSet.set(this.localStorageService.getSet(this.currentTrackSetId()) ?? new TrackSet('New Set'));
       })
-      this.currentTrackSet.set(this.localStorageService.getSet(this.currentTrackSetId()) ?? new TrackSet('New Set'));
     }
 
+    /**
+     * Creates a new track and pushes it into TrackSet
+     */
     AddSong() {
       this.currentTrackSet().Tracks.push({
         Artist: '',
@@ -59,13 +65,22 @@ import { LocalSaveStatus, SaveStatus } from "../../components/LocalSaveStatus";
       } as MusicTrack);
     }
 
+    /**
+     * OnBlur (Focus Leave)
+     * Kicks off saving to LocalStorage
+     */
     onBlur(): void {
       console.log(this.currentTrackSet);
       this.currentStatus.set(SaveStatus.saving);
-      this.localStorageService.saveSet(this.currentTrackSetId(), this.currentTrackSet()).then(() =>{
-        this.currentStatus.set(SaveStatus.clean);
-      });
+      this.localStorageService.saveSet(this.currentTrackSetId(), this.currentTrackSet()).then(() =>
+        this.currentStatus.set(SaveStatus.clean)
+      );
     }
+
+    /**
+     * OnChange (Value changes)
+     * Mark LocalState saving status as dirty
+     **/
     onChange(): void {
       this.currentStatus.set(SaveStatus.dirty);
     }

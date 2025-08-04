@@ -1,7 +1,10 @@
 .song-row {
     display: flex;
     flex-direction: row;
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 .song-row > div {
     display: flex;

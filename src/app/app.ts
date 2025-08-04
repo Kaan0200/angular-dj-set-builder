@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { SetNavigation } from "./components/SetNavigation";
 import { TrackSet } from './models/TrackSet';
 import { LocalStorageService } from './services/local-storage.service';
@@ -21,12 +21,18 @@ export class App {
   private localStorageService = new LocalStorageService();
   /* List of Sets in Application */
   public SetLists: Array<TrackSet> = [];
+  /** Router Service Injection */
+  private router: Router = inject(Router);
 
   constructor() {
     // no data in the app, create a demo Set
     if (localStorage.length == 0) {
       this.createSet('Demo Set');
     }
+
+    this.SetLists = this.localStorageService.getAll();
+
+    console.log(this.SetLists);
     // get the saved values out and update the entire app with the saved local storage
   }
 
@@ -38,5 +44,9 @@ export class App {
     let newSet = new TrackSet(name ?? "New Set List");
     this.localStorageService.saveSet(newSet.Id, newSet);
     this.SetLists.push(newSet);
+  }
+
+  public swapToSet(target: string): void {
+    this.router.navigate(["/", target]);
   }
 }

@@ -14,14 +14,15 @@ export class LocalStorageService {
      * @returns A promise once the TrackSet is saved
      */
     saveSet(Id: string, value: TrackSet): Promise<void> {
-        return new Promise<void>((): void => {
-        try {
-            const jsonValue = JSON.stringify(value);
-            localStorage.setItem(Id, jsonValue);
-            return;
-        } catch (error: unknown) {
-            console.error('Error saving to local storage', error);
-        }
+        return new Promise<void>((rez, rej): void => {
+            try {
+                const jsonValue = JSON.stringify(value);
+                localStorage.setItem(Id, jsonValue);
+                rez();
+            } catch (error: unknown) {
+                console.error('Error saving to local storage', error);
+                rej();
+            }  
         })
     }
 
@@ -45,13 +46,25 @@ export class LocalStorageService {
      * Gets all TrackSets in LocalStorage
      */
     getAll(): TrackSet[] {
-        try {
-            //localStorage.getItem
-        } catch {
+        let returnSets: TrackSet[] = [];
+        const items = { ...localStorage };
+        for (const stringObj in items) {
+            try {
+                let decodedSet: TrackSet = JSON.parse(localStorage.getItem(stringObj) ?? "");
+                if (decodedSet.Flag === 'dj-flag') {
+                    returnSets.push(decodedSet);
+                }
+                
+            } catch {
+                // unable to convert back to Object, stored item is not a TrackSet
+                console.error("attempted converting a non TrackSet from localstorage");
+            }
 
         }
-        return [];
+        
+        return returnSets;
     }
+    
 
     /**
      * Function that deletes a LocalStorage Trackset

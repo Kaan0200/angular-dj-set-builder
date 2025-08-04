@@ -10,6 +10,8 @@ export class TrackSet {
   /** List of Tracks */
   Tracks: Array<MusicTrack> = [];
 
+  readonly Flag: "dj-flag" = "dj-flag";
+
   constructor(name: string) {
     this.Name = name;
     this.Id = crypto.randomUUID();

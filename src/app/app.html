@@ -36,7 +36,7 @@
     <a class="about-link" routerLink="/about">About</a>
   </div>
   <div class="nav-and-content">
-    <set-navigation [Sets]="SetLists" (newSet)="createSet()"/>
+    <set-navigation [Sets]="SetLists" (newSet)="createSet()" (swapTo)="swapToSet($event)"/>
     <div class="content-wrapper">
       <router-outlet />
     </div>

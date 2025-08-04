@@ -19,7 +19,7 @@ import { RouterLink } from '@angular/router';
             </mat-list-item>
             @for (link of Sets(); track link) {
               <mat-list-item>
-                <a routerLink="./{{link.Id}}">{{ link.Name }}</a>
+                <a (click)="SwapTo(link.Id)">{{ link.Name }}</a>
               </mat-list-item>
             }
             <mat-list-item (click)="NewSet()">
@@ -33,6 +33,11 @@ export class SetNavigation {
 
     Sets = input.required<Array<TrackSet>>();
     newSet = output<void>();
+    swapTo = output<string>();
+    
+    public SwapTo(targetId: string) {
+      this.swapTo.emit(targetId);
+    }
 
     public NewSet() {
         this.newSet.emit();
