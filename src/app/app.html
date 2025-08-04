@@ -1,33 +1,30 @@
 <style>
-.main {
-  grid-template-rows: auto 1fr;
-  color: white;
-}
-.top-bar {
-  display: flex;
-  background-color:blueviolet;
-  align-content: space-evenly;
-  justify-content: space-between;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-.nav-and-content {
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
-.side-navigation {
-  padding: 1em;
-  display: block;
-}
-.content-wrapper {
-  padding: 1em;
-}
-.about-link {
-  
-  align-content: space-evenly;
-}
-
-
+  .main {
+    grid-template-rows: auto 1fr;
+    color: white;
+  }
+  .top-bar {
+    display: flex;
+    background-color: blueviolet;
+    align-content: space-evenly;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .nav-and-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+  .side-navigation {
+    padding: 1em;
+    display: block;
+  }
+  .content-wrapper {
+    padding: 1em;
+  }
+  .about-link {
+    align-content: space-evenly;
+  }
 </style>
 
 <main class="main">
@@ -36,12 +33,13 @@
     <a class="about-link" routerLink="/about">About</a>
   </div>
   <div class="nav-and-content">
-    <set-navigation [Sets]="SetLists" (newSet)="createSet()" (swapTo)="swapToSet($event)"/>
+    <set-navigation
+      [Sets]="SetLists"
+      (newSet)="createSet()"
+      (swapTo)="swapToSet($event)"
+    />
     <div class="content-wrapper">
       <router-outlet />
     </div>
   </div>
 </main>
-
-
-

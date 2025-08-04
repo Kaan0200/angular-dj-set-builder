@@ -1,4 +1,4 @@
-import { MusicTrack } from "./MusicTrack";
+import { MusicTrack } from './MusicTrack';
 
 /** Interface Object representing a DJ Set of Tracks */
 export class TrackSet {
@@ -10,7 +10,7 @@ export class TrackSet {
   /** List of Tracks */
   Tracks: Array<MusicTrack> = [];
 
-  readonly Flag: "dj-flag" = "dj-flag";
+  readonly Flag: 'dj-flag' = 'dj-flag';
 
   constructor(name: string) {
     this.Name = name;

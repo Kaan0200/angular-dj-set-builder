@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { SetNavigation } from "./components/SetNavigation";
+import { SetNavigation } from './components/SetNavigation';
 import { TrackSet } from './models/TrackSet';
 import { LocalStorageService } from './services/local-storage.service';
 
@@ -8,7 +8,7 @@ import { LocalStorageService } from './services/local-storage.service';
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, SetNavigation],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 
 /**
@@ -41,12 +41,12 @@ export class App {
    * @param name String to name the set with
    */
   public createSet(name?: string): void {
-    let newSet = new TrackSet(name ?? "New Set List");
+    let newSet = new TrackSet(name ?? 'New Set List');
     this.localStorageService.saveSet(newSet.Id, newSet);
     this.SetLists.push(newSet);
   }
 
   public swapToSet(target: string): void {
-    this.router.navigate(["/", target]);
+    this.router.navigate(['/', target]);
   }
 }

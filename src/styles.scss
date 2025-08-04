@@ -1,14 +1,30 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
-// General Override Themes
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//****************************************************
+// General CSS Application Configurations / Overrides
+//****************************************************
+
+// General Sizing
+html,
+body {
+  height: 100%;
+}
+
+// Font Settings
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #3c3c3c;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 // Angular Theme Settings
 html {
-  @include mat.theme((
-    density: -5
-  ));
+  @include mat.theme(
+    (
+      density: -5,
+    )
+  );
 }
 
 ol {
