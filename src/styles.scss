@@ -30,3 +30,13 @@ html {
 ol {
   padding-inline-start: 0;
 }
+
+
+//*********************//
+// Component Overrides //
+
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: #3c3c3c,
+  ));
+}

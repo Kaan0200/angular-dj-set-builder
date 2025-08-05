@@ -12,7 +12,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { MatIconModule } from '@angular/material/icon';
-import { MatFabButton } from '@angular/material/button';
+import { MatFabButton, MatIconButton } from '@angular/material/button';
 import {
   MatFormField,
 } from '@angular/material/form-field';
@@ -21,12 +21,14 @@ import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { LocalSaveStatus, SaveStatus } from '../../components/LocalSaveStatus';
 
 @Component({
   imports: [
     FormsModule,
     MatIconModule,
+    MatIconButton,
     MatFabButton,
     MatFormField,
     MatInput,
@@ -34,6 +36,8 @@ import { LocalSaveStatus, SaveStatus } from '../../components/LocalSaveStatus';
     MatOption,
     MatSlideToggle,
     LocalSaveStatus,
+    MatExpansionModule,
+    MatAccordion,
     ReactiveFormsModule,
   ],
   selector: 'set-page',
@@ -88,7 +92,6 @@ export class SetPage {
    * Kicks off saving to LocalStorage
    */
   onBlur(): void {
-    console.log(this.currentTrackSet);
     this.currentStatus.set(SaveStatus.saving);
     this.localStorageService
       .saveSet(this.currentTrackSetId(), this.currentTrackSet())

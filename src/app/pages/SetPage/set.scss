@@ -5,6 +5,8 @@
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  
+  justify-content: space-between;
 }
 .song-row > div {
   display: flex;
@@ -18,4 +20,8 @@
 .set-header {
   display: flex;
   justify-content: space-between;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
