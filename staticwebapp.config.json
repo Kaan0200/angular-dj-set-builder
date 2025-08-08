@@ -2,9 +2,6 @@
     "routes": [
         {
             "route": "/*"
-        },
-        {
-            "route": "/about"
         }
     ]
 }
