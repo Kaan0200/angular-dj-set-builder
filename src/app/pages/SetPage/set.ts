@@ -16,6 +16,7 @@ import { MatFabButton, MatIconButton } from '@angular/material/button';
 import {
   MatFormField,
 } from '@angular/material/form-field';
+import { MatDialog } from "@angular/material/dialog";
 import { MatInput } from '@angular/material/input';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { LocalSaveStatus, SaveStatus } from '../../components/LocalSaveStatus';
+import { ConfigureSetDialog } from '../../components/ConfigureSetDialog';
 
 @Component({
   imports: [
@@ -52,15 +54,18 @@ export class SetPage {
   // Moving import into class so Angular Template can access const
   public readonly MusicKeys = AvailableKeys;
   public readonly SaveStatus = SaveStatus;
-
+  
   // inject services
+  private dialog = inject(MatDialog);
   private activeRoute = inject(ActivatedRoute);
   private localStorageService = inject(LocalStorageService);
 
   currentTrackSetId = signal('');
-
   currentTrackSet = signal(new TrackSet('default'));
   currentStatus = signal(SaveStatus.clean);
+
+  // General Fields
+  private IsEditing: boolean = false;
 
   constructor() {
     // Subscribe/Listen to route changes
@@ -71,6 +76,13 @@ export class SetPage {
           new TrackSet('New Set'),
       );
     });
+  }
+
+  /**
+   * Changes the title into an editable text field
+   */
+  ConfigureSet() {
+    this.dialog.open(ConfigureSetDialog);
   }
 
   /**

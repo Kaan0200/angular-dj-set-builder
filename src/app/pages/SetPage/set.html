@@ -5,11 +5,15 @@
           <mat-panel-title>{{ this.currentTrackSet().Name }}</mat-panel-title>
           <local-save-status [Status]="this.currentStatus()" />
         </mat-expansion-panel-header>
-        <div>
-          {{ this.currentTrackSet().Id }}
-          <button matIconButton>
-            <mat-icon>edit</mat-icon>
-          </button>
+        <div class="detail-row">
+          <div>
+            {{ this.currentTrackSet().Id }}
+          </div>
+          <div>
+            <button matIconButton (click)="ConfigureSet()">
+              <mat-icon>settings</mat-icon>
+            </button>
+          </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
