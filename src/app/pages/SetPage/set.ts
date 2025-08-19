@@ -13,10 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFabButton, MatIconButton } from '@angular/material/button';
-import {
-  MatFormField,
-} from '@angular/material/form-field';
-import { MatDialog } from "@angular/material/dialog";
+import { MatFormField } from '@angular/material/form-field';
+import { MatDialog } from '@angular/material/dialog';
 import { MatInput } from '@angular/material/input';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,7 +52,7 @@ export class SetPage {
   // Moving import into class so Angular Template can access const
   public readonly MusicKeys = AvailableKeys;
   public readonly SaveStatus = SaveStatus;
-  
+
   // inject services
   private dialog = inject(MatDialog);
   private activeRoute = inject(ActivatedRoute);

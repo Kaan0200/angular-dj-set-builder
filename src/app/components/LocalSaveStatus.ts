@@ -4,12 +4,14 @@ import { MatIcon } from '@angular/material/icon';
 @Component({
   selector: 'local-save-status',
   imports: [MatIcon],
-  styles: `.status {
-    padding-top: .5rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    color: grey;
-  }`,
+  styles: `
+    .status {
+      padding-top: 0.5rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      color: grey;
+    }
+  `,
   template: ` <mat-icon class="status">{{ StatusIcon() }}</mat-icon> `,
 })
 export class LocalSaveStatus {

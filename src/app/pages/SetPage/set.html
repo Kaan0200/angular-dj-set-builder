@@ -1,72 +1,70 @@
 <div>
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>{{ this.currentTrackSet().Name }}</mat-panel-title>
-          <local-save-status [Status]="this.currentStatus()" />
-        </mat-expansion-panel-header>
-        <div class="detail-row">
-          <div>
-            {{ this.currentTrackSet().Id }}
-          </div>
-          <div>
-            <button matIconButton (click)="ConfigureSet()">
-              <mat-icon>settings</mat-icon>
-            </button>
-          </div>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ this.currentTrackSet().Name }}</mat-panel-title>
+        <local-save-status [Status]="this.currentStatus()" />
+      </mat-expansion-panel-header>
+      <div class="detail-row">
+        <div>
+          {{ this.currentTrackSet().Id }}
         </div>
-      </mat-expansion-panel>
-    </mat-accordion>
+        <div>
+          <button matIconButton (click)="ConfigureSet()">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 
   <div>
     <ol>
       @for (song of this.currentTrackSet().Tracks; track song) {
         <li class="song-row">
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Song Artist"
-                [(ngModel)]="song.Artist"
-                (blur)="onBlur()"
-                (change)="onChange()"
-              />
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Song title"
-                [(ngModel)]="song.Title"
-                (blur)="onBlur()"
-                (change)="onChange()"
-              />
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Record Label"
-                [(ngModel)]="song.Label"
-                (blur)="onBlur()"
-                (change)="onChange()"
-              />
-            </mat-form-field>
-            <mat-form-field class="small-input">
-              <mat-select placeholder="Key" [(ngModel)]="song.MusicKey">
-                @for (key of MusicKeys; track key) {
-                  <mat-option>{{ key }}</mat-option>
-                }
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="small-input">
-              <input
-                matInput
-                placeholder="Tempo"
-                type="number"
-                [(ngModel)]="song.BPM"
-              />
-            </mat-form-field>
-            <mat-slide-toggle label-Position="before"
-              >Acquired</mat-slide-toggle
-            >
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Song Artist"
+              [(ngModel)]="song.Artist"
+              (blur)="onBlur()"
+              (change)="onChange()"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Song title"
+              [(ngModel)]="song.Title"
+              (blur)="onBlur()"
+              (change)="onChange()"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Record Label"
+              [(ngModel)]="song.Label"
+              (blur)="onBlur()"
+              (change)="onChange()"
+            />
+          </mat-form-field>
+          <mat-form-field class="small-input">
+            <mat-select placeholder="Key" [(ngModel)]="song.MusicKey">
+              @for (key of MusicKeys; track key) {
+                <mat-option>{{ key }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="small-input">
+            <input
+              matInput
+              placeholder="Tempo"
+              type="number"
+              [(ngModel)]="song.BPM"
+            />
+          </mat-form-field>
+          <mat-slide-toggle label-Position="before">Acquired</mat-slide-toggle>
         </li>
       }
     </ol>
