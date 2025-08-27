@@ -1,0 +1,12 @@
+{
+    "root": "backend/database",
+    "targets": {
+        "create": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "psql -U postgres < setup.sql"
+            }
+        }
+    }
+     
+}

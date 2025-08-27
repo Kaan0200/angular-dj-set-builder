@@ -1,0 +1,17 @@
+{
+  "root": "backend/set-builder-server/",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        /* ... */
+      }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        /* ... */
+      }
+    }
+  }
+}
