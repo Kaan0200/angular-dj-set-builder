@@ -6,6 +6,12 @@
             "options": {
                 "command": "psql -U postgres < setup.sql"
             }
+        },
+        "install": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "pwsh -File ./backend/database/create.ps1"
+            }
         }
     }
      

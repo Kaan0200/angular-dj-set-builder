@@ -1,8 +1,15 @@
+
 CREATE TABLE Users (
-    ID INT IDENTITY(1, 1) PRIMARY KEY,
+    ID BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     UserName VARCHAR(50),
     Password VARCHAR(50),
-    LastLogin DateTime,
-    UserSettings NVARCHAR(MAX),
-    CONSTRAINT CHK_UserSetting_JSON
-)
+    LastLogin TIMESTAMP,
+    UserSettings JSONB
+);
+
+CREATE TABLE Sets (
+    ID BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    UserID BIGINT REFERENCES Users(ID),
+    SetData JSONB,
+    Modified TIMESTAMP
+);
