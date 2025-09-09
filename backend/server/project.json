@@ -1,5 +1,5 @@
 {
-  "root": "backend/set-builder-server/",
+  "root": "backend/server",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
