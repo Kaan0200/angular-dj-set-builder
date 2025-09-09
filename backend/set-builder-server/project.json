@@ -12,6 +12,12 @@
       "options": {
         /* ... */
       }
+    },
+    "lint": {
+      "executor": "@nx/eslint",
+      "options": {
+        /* ... */
+      }
     }
   }
 }
