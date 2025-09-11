@@ -3,10 +3,12 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { SetNavigation } from './components/SetNavigation';
 import { TrackSet } from './models/TrackSet';
 import { LocalStorageService } from './services/local-storage.service';
+import { LoginPanel } from './components/LoginPanel';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, SetNavigation],
+  imports: [RouterOutlet, RouterLink, SetNavigation, MatButton, LoginPanel],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -21,8 +23,11 @@ export class App {
   private localStorageService = new LocalStorageService();
   /* List of Sets in Application */
   public SetLists: Array<TrackSet> = [];
+  /* Show the login panel UI */
+  public showLogin: boolean = false;
   /** Router Service Injection */
   private router: Router = inject(Router);
+
 
   constructor() {
     // no data in the app, create a demo Set
@@ -48,5 +53,13 @@ export class App {
 
   public swapToSet(target: string): void {
     this.router.navigate(['/', target]);
+  }
+
+  public openLogin(): void {
+    this.showLogin = true;
+  }
+
+  public closeLogin(): void {
+    this.showLogin = false;
   }
 }

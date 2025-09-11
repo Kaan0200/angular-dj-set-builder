@@ -25,13 +25,33 @@
   .about-link {
     align-content: space-evenly;
   }
+  .login-cover {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    background-color: black;
+    z-index: 10;
+  }
+
 </style>
 
 <main class="main">
   <div class="top-bar">
     <h3>DJ Set Builder 🎵</h3>
+    <div>
     <a class="about-link" routerLink="/about">About</a>
+    <button matButton
+      (click)="openLogin()"
+    >Login</button>
+    </div>
   </div>
+  @if (showLogin) {
+    <div class="login-cover" (click)="closeLogin()"></div>
+    <login-panel (close)="closeLogin()"/>
+  }
   <div class="nav-and-content">
     <set-navigation
       [Sets]="SetLists"
