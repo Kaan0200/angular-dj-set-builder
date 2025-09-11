@@ -11,6 +11,9 @@
     padding-left: 2rem;
     padding-right: 2rem;
   }
+  .top-bar-controls {
+    align-content: center;
+  }
   .nav-and-content {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -41,13 +44,13 @@
 <main class="main">
   <div class="top-bar">
     <h3>DJ Set Builder 🎵</h3>
-    <div>
-    <button matButton>
-      <a class="about-link" routerLink="/about">About</a>
-    </button>
-    <button matButton
-      (click)="openLogin()"
-    >Login</button>
+    <div class="top-bar-controls">
+      <button matButton>
+        <a class="about-link" routerLink="/about">About</a>
+      </button>
+      <button matButton
+        (click)="openLogin()"
+      >Login</button>
     </div>
   </div>
   @if (showLogin) {
